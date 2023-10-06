@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Details</title>
+</head>
+<body>
+<h1>Vehicle Details</h1>
+<form action="/auth/vehicle/form" method="post" th:object="${vehicleDTO}">
+    <label for="vehicleNo">Vehicle Number:</label>
+    <input type="text" id="vehicleNo" name="vehicleNo" th:field="*{vehicleNo}" required><br><br>
+
+    <label for="vehicleRegistraionCity">Vehicle Registraion City:</label>
+    <input type="text" id="vehicleRegistraionCity" name="vehicleRegistraionCity" th:field="*{vehicleRegistraionCity}" required><br><br>
+
+    <label for="modelNo">Model No:</label>
+    <input type="modelNo" id="modelNo" name="modelNo" th:field="*{modelNo}" required><br><br>
+
+    <label for="brand">Brand:</label>
+    <input type="text" id="brand" name="brand" th:field="*{brand}" required><br><br>
+
+    <label>Vehicle Type:</label>
+<!--    <input type="text" id="vehicleType" name="vehicleType" th:field="*{vehicleType}" required><br><br>-->
+
+    <select th:field="*{vehicleType}">
+        <option value="">Select Vehicle Type</option>
+        <option th:each="vehicleType:${vehicleTypes}" th:value="${vehicleType}" th:text="${vehicleType}"></option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

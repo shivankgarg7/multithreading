@@ -1,0 +1,20 @@
+documents:
+  documentMapPerCity:
+    Bengaluru:
+      Sedan:
+        - NY_Sedan_Document1
+        - NY_Sedan_Document2
+      SUV:
+        - NY_SUV_Document1
+        - NY_SUV_Document2
+    Paris:
+      Sedan:
+        - LA_Sedan_Document1
+        - LA_Sedan_Document2
+      SUV:
+        - LA_SUV_Document1
+        - LA_SUV_Document2
+    Default:
+      Default:
+        - DefaultDocument1
+        - DefaultDocument2

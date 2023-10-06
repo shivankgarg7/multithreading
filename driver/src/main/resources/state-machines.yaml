@@ -1,0 +1,52 @@
+machines:
+  statemachines:
+      Bengaluru:
+        Sedan:
+          states: [ DOCS_UPLOADED, RTO_APPROVAL, BACKGROUND_VERIFICATION, CAN_SHIP_TRACKING_DEVICE, TRAINING_VIDEOS_SEEN , CAN_MARK_READY_STATE]
+          transitions:
+            - from: DOCS_UPLOADED
+              to: RTO_APPROVAL
+              event: START_APPROVAL
+            - from: RTO_APPROVAL
+              to: BACKGROUND_VERIFICATION
+              event: APPROVED
+            - from: BACKGROUND_VERIFICATION
+              to: CAN_SHIP_TRACKING_DEVICE
+              event: APPROVED
+            - from: CAN_SHIP_TRACKING_DEVICE
+              to: TRAINING_VIDEOS_SEEN
+              event: SEEN_TRAINING_VIDEOS
+            - from: TRAINING_VIDEOS_SEEN
+              to: CAN_MARK_READY_STATE
+              event: TRACKING_DEVICE_DELIVERED
+          deferredStateEvents:
+            - state: CAN_SHIP_TRACKING_DEVICE
+              event: TRACKING_DEVICE_DELIVERED
+      Paris:
+        SUV:
+          states: [ DOCS_UPLOADED, VISA_APPROVAL, FELONY_CHARGES_CHECKING, BACKGROUND_VERIFICATION, CAN_SHIP_TRACKING_DEVICE, TRAINING_VIDEOS_SEEN , CAN_MARK_READY_STATE, READY_TO_TAKE_RIDES]
+          transitions:
+            - from: DOCS_UPLOADED
+              to: VISA_APPROVAL
+              event: START_APPROVAL
+            - from: VISA_APPROVAL
+              to: FELONY_CHARGES_CHECKING
+              event: APPROVED
+            - from: FELONY_CHARGES_CHECKING
+              to: BACKGROUND_VERIFICATION
+              event: APPROVED
+            - from: BACKGROUND_VERIFICATION
+              to: CAN_SHIP_TRACKING_DEVICE
+              event: APPROVED
+            - from: CAN_SHIP_TRACKING_DEVICE
+              to: TRAINING_VIDEOS_SEEN
+              event: SEEN_TRAINING_VIDEOS
+            - from: TRAINING_VIDEOS_SEEN
+              to: CAN_MARK_READY_STATE
+              event: TRACKING_DEVICE_DELIVERED
+            - from: CAN_MARK_READY_STATE
+              to: READY_TO_TAKE_RIDES
+              event: MARKING_READY
+          deferredStateEvents:
+            - state: CAN_SHIP_TRACKING_DEVICE
+              event: TRACKING_DEVICE_DELIVERED
